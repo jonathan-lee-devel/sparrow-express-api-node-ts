@@ -8,7 +8,7 @@ import {configureCors} from './config/auth/configure-cors';
 import {connectToDatabase} from './config/database/connect-to-database';
 import {loggerConfig} from './config/logger/logger-config';
 import {UserModel} from './models/User';
-import {UsersRouter} from './routes';
+import {AuthRouter} from './routes';
 import {RegistrationRouter} from '../registration/routes';
 import {PasswordResetRouter} from '../password/routes';
 import {ProfileRouter} from '../profile/routes';
@@ -32,10 +32,10 @@ app.use(configureCors());
 
 connectToDatabase(logger);
 
-app.use('/users', UsersRouter);
-app.use('/users/register', RegistrationRouter);
-app.use('/users/password', PasswordResetRouter);
-app.use('/users/profile', ProfileRouter);
+app.use('/auth', AuthRouter);
+app.use('/register', RegistrationRouter);
+app.use('/password', PasswordResetRouter);
+app.use('/profile', ProfileRouter);
 app.use('/organizations', OrganizationsRouter);
 
 app.use((_req, _res, next) => {
@@ -57,7 +57,6 @@ app.use(
       res.locals.error = req.app.get('env') === 'development' ? err : {};
 
       logger.error(
-          // eslint-disable-next-line max-len
           `Error at ${req.url}: {"status":"${err.status}", "message":"${err.message}"}`,
       );
       res.status(err.status || 500);
