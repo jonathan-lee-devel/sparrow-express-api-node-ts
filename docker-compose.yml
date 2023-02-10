@@ -1,9 +1,9 @@
-version: '3'
+version: '3.8'
 
 services:
   express:
     restart: on-failure
-    image: jonathanleedev/clipboard-api:latest
+    image: jonathanleedev/sparrow-api:latest
     environment:
       SESSION_SECRET: ${SESSION_SECRET}
       FRONT_END_URL: ${FRONT_END_URL}
