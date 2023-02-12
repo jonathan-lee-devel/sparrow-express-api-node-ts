@@ -1,11 +1,14 @@
 import express from 'express';
 import {configureLoginRoute} from './login-route';
 import {configureLogoutRoute} from './logout-route';
+import {loggerConfig} from '../config/logger/logger-config';
 
 const router = express.Router();
 
-configureLoginRoute(router, '/login');
+const logger = loggerConfig();
 
-configureLogoutRoute(router, '/logout');
+configureLoginRoute(router, logger, '/login');
+
+configureLogoutRoute(router, logger, '/logout');
 
 export {router as AuthRouter};
