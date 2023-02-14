@@ -20,7 +20,7 @@ export const makeCreateOrganization = (
       id: await generateId(DEFAULT_ID_LENGTH),
       name,
       administratorEmails: [requestingUser.email],
-      memberEmails: [requestingUser.email],
+      memberEmails: [],
     };
 
     try {
