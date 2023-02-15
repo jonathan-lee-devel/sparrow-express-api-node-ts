@@ -13,6 +13,7 @@ import {RegistrationRouter} from '../registration/routes';
 import {PasswordResetRouter} from '../password/routes';
 import {ProfileRouter} from '../profile/routes';
 import {OrganizationsRouter} from '../organizations/routes';
+import {NotificationsRouter} from '../notifications/routes';
 
 const logger = loggerConfig();
 
@@ -37,6 +38,7 @@ app.use('/register', RegistrationRouter);
 app.use('/password', PasswordResetRouter);
 app.use('/profile', ProfileRouter);
 app.use('/organizations', OrganizationsRouter);
+app.use('/notifications', NotificationsRouter);
 
 app.use((_req, _res, next) => {
   next(createError(404));
