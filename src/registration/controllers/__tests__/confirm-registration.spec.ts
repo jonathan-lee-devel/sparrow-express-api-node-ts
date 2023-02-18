@@ -26,10 +26,10 @@ describe('Confirm Registration Controller tests', () => {
 
     const requestTokenValue = '12345';
     const httpRequest: HttpRequest = {
-      body: undefined,
-      params: {
+      body: {
         tokenValue: requestTokenValue,
       },
+      params: undefined,
       user: undefined,
     };
 
@@ -51,10 +51,10 @@ describe('Confirm Registration Controller tests', () => {
     );
 
     const httpRequest: HttpRequest = {
-      body: undefined,
-      params: {
+      body: {
         tokenValue: '12345',
       },
+      params: undefined,
       user: undefined,
     };
 

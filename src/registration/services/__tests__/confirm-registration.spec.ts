@@ -38,7 +38,11 @@ describe('Registration Service Confirm Registration Tests', () => {
     // @ts-ignore
     const confirmRegistration = makeConfirmRegistration(
         // @ts-ignore
-        {},
+        {
+          // @ts-ignore
+          error: () => {
+          },
+        },
         {
           findOne: () => {
             return {};
@@ -96,7 +100,11 @@ describe('Registration Service Confirm Registration Tests', () => {
     // @ts-ignore
     const confirmRegistration = makeConfirmRegistration(
         // @ts-ignore
-        {},
+        {
+          // @ts-ignore
+          info: () => {
+          },
+        },
         {
           findOne: () => {
             return {
