@@ -29,7 +29,7 @@ const passport = configurePassport(UserModel);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(configureCors());
+app.use(configureCors(logger));
 
 connectToDatabase(logger);
 
