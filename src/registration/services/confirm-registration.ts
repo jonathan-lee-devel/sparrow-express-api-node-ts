@@ -26,6 +26,7 @@ export const makeConfirmRegistration = (
 
       const userModel = await UserModel.findOne({email: tokenModel.userEmail});
       if (!userModel) {
+        logger.error(`No user found for registration verification token with userEmail: <${tokenModel.userEmail}>`);
         return {
           status: 500,
           data: {
@@ -45,6 +46,7 @@ export const makeConfirmRegistration = (
       await userModel.save();
       tokenModel.expiryDate = new Date();
       await tokenModel.save();
+      logger.info(`Successful registration confirmation for user with e-mail: <${userModel.email}>`);
       return {
         status: 200,
         data: {

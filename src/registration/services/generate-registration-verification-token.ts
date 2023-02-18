@@ -15,7 +15,7 @@ export const makeGenerateRegistrationVerificationToken = (
       expiryTimeMinutes: number,
       userEmail: string) {
     const registrationVerificationToken: RegistrationVerificationToken = {
-      value: randomBytes(tokenSize).toString('hex'),
+      value: randomBytes(tokenSize / 2).toString('hex'),
       expiryDate: addMinutes(new Date(), expiryTimeMinutes),
       userEmail,
     };
@@ -24,6 +24,7 @@ export const makeGenerateRegistrationVerificationToken = (
           registrationVerificationToken,
       ).save();
 
+      logger.info(`Generated registration verification token for user with e-mail: <${userEmail}>`);
       return {
         status: 201,
         data: registrationVerificationToken,

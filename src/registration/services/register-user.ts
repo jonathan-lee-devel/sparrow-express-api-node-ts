@@ -81,7 +81,7 @@ export const makeRegisterUser = (
     // Mail is slow to send and can be sent asynchronously, hence, no await
     sendMail(email, 'Registration Confirmation',
         // @ts-ignore
-        `<h4>Please click the following link to verify your account: <a href="${process.env.FRONT_END_URL}/register/verify/${registrationVerificationTokenContainer.data.value}">Verify Account</a></h4>`);
+        `<h4>Please click the following link to verify your account: <a href="${process.env.FRONT_END_URL}/register/confirm/${registrationVerificationTokenContainer.data.value}">Verify Account</a></h4>`);
 
     return {
       status: 200,

@@ -7,6 +7,7 @@ import {loggerConfig} from '../../../main/config/logger/logger-config';
 const logger = loggerConfig();
 
 export const sendMail = makeSendMail(
+    logger,
     transporterConfig(),
     makeSendMailCallback(logger),
 );

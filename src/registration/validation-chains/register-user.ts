@@ -21,4 +21,11 @@ export const registerUserValidationChain: ValidationChain[] = [
       .custom((input, {req}) => {
         return input === req.body.password;
       }),
+  body('acceptTermsAndConditions',
+      'You must accept the terms and conditions to create an account')
+      .exists()
+      .isBoolean({strict: true})
+      .custom((input) => {
+        return input === true;
+      }),
 ];

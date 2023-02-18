@@ -1,1 +1,1 @@
-export const DEFAULT_TOKEN_SIZE = 64;
+export const DEFAULT_TOKEN_SIZE = 128;

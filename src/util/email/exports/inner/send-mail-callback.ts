@@ -13,7 +13,7 @@ export const makeSendMailCallback = (
       logger.error(err);
       return false;
     }
-    logger.info(`E-mail sent with response: ${info.response}`);
+    logger.info(`E-mail sent to with response: ${info.response}`);
     return true;
   };
 };

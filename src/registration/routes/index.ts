@@ -5,6 +5,7 @@ import {HttpRequestMethod} from '../../main/enums/http-request-method';
 import {makeExpressCallback} from '../../main/express-callbacks/express-callback';
 import {confirmRegistrationController, registerUserController} from '../controllers';
 import {registerUserValidationChain} from '../validation-chains/register-user';
+import {confirmRegistrationValidationChain} from '../validation-chains/confirm-registration';
 
 const router = express.Router();
 
@@ -22,9 +23,9 @@ configureRoute(
 configureRoute(
     router,
     HttpRequestMethod.POST,
-    '/confirm/:tokenValue',
+    '/confirm',
     false,
-    [],
+    confirmRegistrationValidationChain,
     makeExpressCallback(logger, confirmRegistrationController),
 );
 
