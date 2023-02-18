@@ -2,14 +2,17 @@ import passport from 'passport';
 import bcrypt from 'bcrypt';
 import {Strategy as LocalStrategy} from 'passport-local';
 import {HydratedDocument, Model} from 'mongoose';
-import {User} from "../../models/User";
+import {User} from '../../models/User';
+import bunyan from 'bunyan';
 
 /**
  * Passport configuration.
+ * @param {bunyan} logger used for logging
  * @param UserModel user model used to represent logged-in user
  */
 export const configurePassport =
-    (UserModel: Model<User>): passport.PassportStatic => {
+    (logger: bunyan, UserModel: Model<User>): passport.PassportStatic => {
+      logger.info('Configuring passport with provided user model');
       passport.use(
           new LocalStrategy(async (username, password, done) => {
             try {
