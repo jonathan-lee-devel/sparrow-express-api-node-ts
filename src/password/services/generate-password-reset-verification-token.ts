@@ -20,7 +20,7 @@ export const makeGeneratePasswordResetVerificationToken = (
       expiryTimeMinutes: number,
       userEmail: string) {
     const passwordResetVerificationToken: PasswordResetVerificationToken = {
-      value: randomBytes(tokenSize).toString('hex'),
+      value: randomBytes(tokenSize / 2).toString('hex'),
       expiryDate: addMinutes(new Date(), expiryTimeMinutes),
       userEmail,
     };

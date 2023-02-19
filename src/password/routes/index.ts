@@ -23,7 +23,7 @@ configureRoute(
 configureRoute(
     router,
     HttpRequestMethod.POST,
-    '/reset/confirm/:tokenValue',
+    '/reset/confirm',
     false,
     confirmPasswordResetValidationChain,
     makeExpressCallback(logger, confirmPasswordResetController),

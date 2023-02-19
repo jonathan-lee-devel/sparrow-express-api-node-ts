@@ -13,7 +13,7 @@ export const makeConfirmPasswordResetController = (
       httpRequest: HttpRequest,
   ) {
     const passwordContainer = await confirmPasswordReset(
-        httpRequest.params.tokenValue,
+        httpRequest.body.tokenValue,
         httpRequest.body.password,
     );
     return {
