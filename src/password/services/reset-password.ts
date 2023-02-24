@@ -72,7 +72,7 @@ export const makeResetPassword = (
       // Mail is slow to send and can be sent asynchronously, hence, no await
       sendMail(email, 'Password Reset',
           // eslint-disable-next-line max-len
-          `<h4>Please click the following link to reset your password: ${process.env.FRONT_END_URL}/password/reset/confirm/${passwordResetVerificationTokenContainer.data.value}</h4>`);
+          `<h4>Please click the following link to reset your password: <a href="${process.env.FRONT_END_URL}/password/reset/confirm/${passwordResetVerificationTokenContainer.data.value}">Reset Password</a></h4>`);
       return {
         status: 200,
         data: {
