@@ -9,10 +9,16 @@ import {makeGetRequestsToJoinOrganization} from './get-requests-to-join-organiza
 import {makeRemoveOrganizationMember} from './remove-organization-member';
 import {makeApproveRequestToJoinOrganization} from './approve-request-to-join-organization';
 import {makeRemoveOrganizationAdministrator} from './remove-organization-administrator';
+import {makeGetOrganizationsWhereInvolved} from './get-organizations-where-involved';
 
 const logger = loggerConfig();
 
 export const getOrganization = makeGetOrganization(
+    logger,
+    OrganizationModel,
+);
+
+export const getOrganizationsWhereInvolved = makeGetOrganizationsWhereInvolved(
     logger,
     OrganizationModel,
 );

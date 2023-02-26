@@ -7,6 +7,7 @@ import {
   approveRequestToJoinOrganizationController,
   createOrganizationController,
   getOrganizationController,
+  getOrganizationsWhereInvolvedController,
   getRequestsToJoinOrganizationController,
   removeOrganizationAdministratorController,
   removeOrganizationMemberController,
@@ -20,7 +21,9 @@ const router = express.Router();
 
 const logger = loggerConfig();
 
-configureRoute(router, HttpRequestMethod.POST, '/create', true, createOrganizationValidationChain, makeExpressCallback(logger, createOrganizationController));
+configureRoute(router, HttpRequestMethod.POST, '/', true, createOrganizationValidationChain, makeExpressCallback(logger, createOrganizationController));
+
+configureRoute(router, HttpRequestMethod.GET, '/where-involved', true, [], makeExpressCallback(logger, getOrganizationsWhereInvolvedController));
 
 configureRoute(router, HttpRequestMethod.GET, '/:organizationId', true, [], makeExpressCallback(logger, getOrganizationController));
 
