@@ -1,1 +1,1 @@
-export const DEFAULT_ID_LENGTH = 16;
+export const DEFAULT_ID_LENGTH = 32;

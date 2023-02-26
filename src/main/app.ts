@@ -14,6 +14,7 @@ import {PasswordResetRouter} from '../password/routes';
 import {ProfileRouter} from '../profile/routes';
 import {OrganizationsRouter} from '../organizations/routes';
 import {NotificationsRouter} from '../notifications/routes';
+import {DeliveriesRouter} from '../deliveries/routes';
 
 const logger = loggerConfig();
 
@@ -39,6 +40,7 @@ app.use('/password', PasswordResetRouter);
 app.use('/profile', ProfileRouter);
 app.use('/organizations', OrganizationsRouter);
 app.use('/notifications', NotificationsRouter);
+app.use('/deliveries', DeliveriesRouter);
 
 app.use((_req, _res, next) => {
   next(createError(404));

@@ -16,6 +16,7 @@ export const makeCreateNotification = (
   return async function createNotification(
       notification: NotificationRequestDto,
   ) {
+    logger.info(`Request to create new notification`);
     const newNotification: Notification = {
       id: await generateId(DEFAULT_ID_LENGTH),
       ...notification,
