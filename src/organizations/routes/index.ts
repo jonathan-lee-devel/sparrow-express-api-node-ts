@@ -7,8 +7,11 @@ import {
   approveRequestToJoinOrganizationController,
   createOrganizationController,
   getOrganizationController,
+  getOrganizationInvitationByTokenValueController,
+  getOrganizationSnippetController,
   getOrganizationsWhereInvolvedController,
   getRequestsToJoinOrganizationController,
+  inviteToJoinOrganizationController,
   removeOrganizationAdministratorController,
   removeOrganizationMemberController,
   requestToJoinOrganizationController,
@@ -16,6 +19,7 @@ import {
 import {createOrganizationValidationChain} from '../validation-chains/create-organization';
 import {removeOrganizationMemberValidationChain} from '../validation-chains/remove-organization-member';
 import {removeOrganizationAdministratorValidationChain} from '../validation-chains/remove-organization-administrator';
+import {inviteToJoinOrganizationValidationChain} from '../validation-chains/invite-to-join-organization';
 
 const router = express.Router();
 
@@ -27,6 +31,8 @@ configureRoute(router, HttpRequestMethod.GET, '/where-involved', true, [], makeE
 
 configureRoute(router, HttpRequestMethod.GET, '/:organizationId', true, [], makeExpressCallback(logger, getOrganizationController));
 
+configureRoute(router, HttpRequestMethod.GET, '/:organizationId/snippet', true, [], makeExpressCallback(logger, getOrganizationSnippetController));
+
 configureRoute(router, HttpRequestMethod.PUT, '/:organizationId/administrators/remove', true, removeOrganizationAdministratorValidationChain, makeExpressCallback(logger, removeOrganizationAdministratorController));
 
 configureRoute(router, HttpRequestMethod.PUT, '/:organizationId/members/remove', true, removeOrganizationMemberValidationChain, makeExpressCallback(logger, removeOrganizationMemberController));
@@ -36,5 +42,9 @@ configureRoute(router, HttpRequestMethod.GET, '/requests-to-join/:organizationId
 configureRoute(router, HttpRequestMethod.POST, '/request-to-join/:organizationId', true, [], makeExpressCallback(logger, requestToJoinOrganizationController));
 
 configureRoute(router, HttpRequestMethod.PUT, '/request-to-join/approve/:requestToJoinOrganizationId', true, [], makeExpressCallback(logger, approveRequestToJoinOrganizationController));
+
+configureRoute(router, HttpRequestMethod.POST, '/invite-to-join/:organizationId', true, inviteToJoinOrganizationValidationChain, makeExpressCallback(logger, inviteToJoinOrganizationController));
+
+configureRoute(router, HttpRequestMethod.GET, '/invitations/tokenValue/:organizationInvitationTokenValue', true, [], makeExpressCallback(logger, getOrganizationInvitationByTokenValueController));
 
 export {router as OrganizationsRouter};

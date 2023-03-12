@@ -5,7 +5,7 @@ import {GetOrganizationFunction} from '../types/get-organization';
 export const makeGetOrganizationController = (
     getOrganization: GetOrganizationFunction,
 ): HttpController => {
-  return async function createOrganizationController(httpRequest: HttpRequest) {
+  return async function getOrganizationController(httpRequest: HttpRequest) {
     const organizationContainer = await getOrganization(
         httpRequest.user,
         httpRequest.params.organizationId,

@@ -10,10 +10,20 @@ import {makeRemoveOrganizationMember} from './remove-organization-member';
 import {makeApproveRequestToJoinOrganization} from './approve-request-to-join-organization';
 import {makeRemoveOrganizationAdministrator} from './remove-organization-administrator';
 import {makeGetOrganizationsWhereInvolved} from './get-organizations-where-involved';
+import {makeGetOrganizationSnippet} from './get-organization-snippet';
+import {makeInviteToJoinOrganization} from './invite-to-join-organization';
+import {OrganizationInvitationModel} from '../models/OrganizationInvitation';
+import {sendMail} from '../../util/email/exports';
+import {makeGetOrganizationInvitationByTokenValue} from './get-organization-invitation-by-token-value';
 
 const logger = loggerConfig();
 
 export const getOrganization = makeGetOrganization(
+    logger,
+    OrganizationModel,
+);
+
+export const getOrganizationSnippet = makeGetOrganizationSnippet(
     logger,
     OrganizationModel,
 );
@@ -56,4 +66,17 @@ export const approveRequestToJoinOrganization = makeApproveRequestToJoinOrganiza
     logger,
     OrganizationMembershipRequestModel,
     OrganizationModel,
+);
+
+export const inviteToJoinOrganization = makeInviteToJoinOrganization(
+    logger,
+    OrganizationModel,
+    OrganizationInvitationModel,
+    generatedId,
+    sendMail,
+);
+
+export const getOrganizationInvitationByTokenValue = makeGetOrganizationInvitationByTokenValue(
+    logger,
+    OrganizationInvitationModel,
 );
