@@ -9,12 +9,26 @@ import {OrganizationMembershipStatus} from '../enums/OrganizationMembershipStatu
 import {GenerateIdFunction} from '../../util/id/types/generate-id';
 import {DEFAULT_ID_LENGTH} from '../../util/id/constants/default-id-length';
 
+/**
+ * Closure for the service function which makes a request for the requesting user to join a given organization by ID.
+ * @param {bunyan} logger used for logging
+ * @param {Model<Organization>} OrganizationModel used to access organization data
+ * @param {Model<OrganizationMembershipRequest>} OrganizationMembershipRequestModel used to access organization membership request data
+ * @param {GenerateIdFunction} generateId used to generate ID for new organization membership request
+ * @return {RequestToJoinOrganizationFunction} service function which makes a request for the requesting user to join a given organization by ID
+ */
 export const makeRequestToJoinOrganization = (
     logger: bunyan,
     OrganizationModel: Model<Organization>,
     OrganizationMembershipRequestModel: Model<OrganizationMembershipRequest>,
     generateId: GenerateIdFunction,
 ): RequestToJoinOrganizationFunction => {
+  /**
+     * Service function which makes a request for the requesting user to join a given organization by ID.
+     * @param {User} requestingUser user making the request
+     * @param {string} organizationId ID of the organization for which the requesting user is requesting to join by ID
+     * @return {Promise<StatusDataContainer<OrganizationMembershipStatusDto>>} status of organization membership
+     */
   return async function requestToJoinOrganization(
       requestingUser: User,
       organizationId: string) {

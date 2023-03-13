@@ -6,10 +6,23 @@ import {returnForbidden, returnInternalServerError} from '../../common/use-cases
 import {errorMessageToDto} from '../../common/use-cases/errors';
 import {RemoveOrganizationAdministratorFunction} from '../types/remove-organization-administrator';
 
+/**
+ * Closure for service function which removes an organization administrator.
+ * @param {bunyan} logger used for logging
+ * @param {Model<Organization>} OrganizationModel used to access organization data
+ * @return {RemoveOrganizationAdministratorFunction} service function which removes an organization administrator
+ */
 export const makeRemoveOrganizationAdministrator = (
     logger: bunyan,
     OrganizationModel: Model<Organization>,
 ): RemoveOrganizationAdministratorFunction => {
+  /**
+     * Service function which removes an organization administrator.
+     * @param {User} requestingUser user making the request
+     * @param {string} organizationId ID of the organization to remove the organization administrator from
+     * @param {string} administratorEmailToRemove e-mail address of the organization administrator to remove from the organization
+     * @return {Promise<StatusDataContainer<OrganizationDto | ErrorDto>>} updated organization or error DTO in case of bad requests
+     */
   return async function removeOrganizationAdministrator(
       requestingUser: User,
       organizationId: string,

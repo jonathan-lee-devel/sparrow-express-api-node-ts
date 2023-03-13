@@ -13,6 +13,15 @@ import {DEFAULT_TOKEN_SIZE} from '../../util/token/default-token-size';
 import {addDays} from 'date-fns';
 import {DEFAULT_TOKEN_EXPIRY_TIME_DAYS} from '../../util/token/default-token-expiry-time-days';
 
+/**
+ * Closure for service function which invites a given user to join an organization.
+ * @param {bunyan} logger used for logging
+ * @param {Model<Organization>} OrganizationModel used to access organization data
+ * @param {Model<OrganizationInvitation>} OrganizationInvitationModel used to access organization invitation data
+ * @param {GenerateIdFunction} generateId used to generate ID for new organization invitation
+ * @param {SendMailFunction} sendMail used to send e-mail to invited user
+ * @return {InviteToJoinOrganizationFunction} service function which invites a given user to join an organization
+ */
 export const makeInviteToJoinOrganization = (
     logger: bunyan,
     OrganizationModel: Model<Organization>,
@@ -20,6 +29,13 @@ export const makeInviteToJoinOrganization = (
     generateId: GenerateIdFunction,
     sendMail: SendMailFunction,
 ): InviteToJoinOrganizationFunction => {
+  /**
+     * Service function which invites a given user to join an organization.
+     * @param {User} requestingUser user making the request
+     * @param {string} organizationId ID of the organization to which the user is being invited to join
+     * @param {string} emailToInvite e-mail address of the user being invited to join the organization
+     * @return {Promise<StatusDataContainer<OrganizationMembershipStatusDto>>} organization membership status
+     */
   return async function inviteToJoinOrganization(
       requestingUser: User,
       organizationId: string,

@@ -5,10 +5,22 @@ import {User} from '../../main/models/User';
 import {GetOrganizationFunction} from '../types/get-organization';
 import {returnForbidden, returnInternalServerError, returnNotFound} from '../../common/use-cases/status-data-container';
 
+/**
+ * Closure for the service function which gets organization data by ID.
+ * @param {bunyan} logger used for logging
+ * @param {Model<Organization>} OrganizationModel used to access organization data
+ * @return {GetOrganizationFunction} service function which gets organization data by ID
+ */
 export const makeGetOrganization = (
     logger: bunyan,
     OrganizationModel: Model<Organization>,
 ): GetOrganizationFunction => {
+  /**
+     * Service function which gets organization data by ID.
+     * @param {User} requestingUser user making the request
+     * @param {string} organizationId ID of the organization data to obtain
+     * @return {Promise<StatusDataContainer<OrganizationDto>>} organization data obtained by ID
+     */
   return async function getOrganization(
       requestingUser: User,
       organizationId: string,

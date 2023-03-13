@@ -6,10 +6,23 @@ import {RemoveOrganizationMemberFunction} from '../types/remove-organization-mem
 import {returnForbidden, returnInternalServerError} from '../../common/use-cases/status-data-container';
 import {errorMessageToDto} from '../../common/use-cases/errors';
 
+/**
+ * Closure for the service function which removes an organization member.
+ * @param {bunyan} logger used for logging
+ * @param {Model<Organization>} OrganizationModel used to access organization data
+ * @return {RemoveOrganizationMemberFunction} service function which removes an organization member
+ */
 export const makeRemoveOrganizationMember = (
     logger: bunyan,
     OrganizationModel: Model<Organization>,
 ): RemoveOrganizationMemberFunction => {
+  /**
+     * Service function which removes an organization administrator.
+     * @param {User} requestingUser user making the request
+     * @param {string} organizationId ID of the organization from which the member is to be removed
+     * @param {string} memberEmailToRemove e-mail address of the user to remove as a member from the organization
+     * @return {Promise<StatusDataContainer<OrganizationDto | ErrorDto>>} updated organization or error DTO in case of bad requests
+     */
   return async function removeOrganizationMember(
       requestingUser: User,
       organizationId: string,

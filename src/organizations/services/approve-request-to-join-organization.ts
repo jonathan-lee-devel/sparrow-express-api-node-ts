@@ -8,11 +8,24 @@ import {ApproveRequestToJoinOrganizationFunction} from '../types/approve-request
 import {errorMessageToDto} from '../../common/use-cases/errors';
 import {OrganizationMembershipStatus} from '../enums/OrganizationMembershipStatus';
 
+/**
+ * Closure for the service function which approves a request to join an organization.
+ * @param {bunyan} logger used for logging
+ * @param {Model<OrganizationMembershipRequest>} OrganizationMembershipRequestModel used to access organization membership request data
+ * @param {Model<Organization>} OrganizationModel used to access organization data
+ * @return {ApproveRequestToJoinOrganizationFunction} service function which approves a request to join an organization
+ */
 export const makeApproveRequestToJoinOrganization = (
     logger: bunyan,
     OrganizationMembershipRequestModel: Model<OrganizationMembershipRequest>,
     OrganizationModel: Model<Organization>,
 ): ApproveRequestToJoinOrganizationFunction => {
+  /**
+     * Service function which approves a request to join an organization.
+     * @param {User} requestingUser user making the request
+     * @param {string} organizationMembershipRequestId ID of the organization membership request being approved
+     * @return {Promise<StatusDataContainer<OrganizationMembershipStatusDto | ErrorDto>>} membership status DTO or error DTO for bad requests
+     */
   return async function approveRequestToJoinOrganization(
       requestingUser: User,
       organizationMembershipRequestId: string,

@@ -8,11 +8,24 @@ import {GetRequestsToJoinOrganizationFunction} from '../types/get-requests-to-jo
 import {errorMessageToDto} from '../../common/use-cases/errors';
 import {OrganizationMembershipRequestDto} from '../dtos/OrganizationMembershipRequestDto';
 
+/**
+ * Closure for the service function which obtains requests to join a given organization by organization ID.
+ * @param {bunyan} logger used for logging
+ * @param {Model<Organization>} OrganizationModel used to access organization data
+ * @param {Model<OrganizationMembershipRequest>} OrganizationMembershipRequestModel used to access organization membership request data
+ * @return {GetRequestsToJoinOrganizationFunction} service function which obtains requests to join a given organization by organization ID
+ */
 export const makeGetRequestsToJoinOrganization = (
     logger: bunyan,
     OrganizationModel: Model<Organization>,
     OrganizationMembershipRequestModel: Model<OrganizationMembershipRequest>,
 ): GetRequestsToJoinOrganizationFunction => {
+  /**
+     * Service function which obtains requests to join a given organization by organization ID.
+     * @param {User} requestingUser user making the request
+     * @param {string} organizationId ID of the organization for which membership requests are to be obtained
+     * @return {Promise<StatusDataContainer<OrganizationMembershipRequestDto[] | ErrorDto>>} organization membership request data or error DTO for bad requests
+     */
   return async function getRequestsToJoinOrganization(
       requestingUser: User,
       organizationId: string) {
