@@ -1,3 +1,6 @@
+/**
+ * DTO which represents an organization.
+ */
 export interface OrganizationDto {
     id: string;
     name: string;

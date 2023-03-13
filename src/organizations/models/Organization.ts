@@ -2,6 +2,9 @@ import mongoose from 'mongoose';
 
 const {model, Schema} = mongoose;
 
+/**
+ * Data model representation of an organization.
+ */
 export interface Organization {
     id: string;
     name: string;

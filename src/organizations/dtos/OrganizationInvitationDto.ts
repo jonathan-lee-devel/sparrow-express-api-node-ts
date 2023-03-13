@@ -1,3 +1,6 @@
+/**
+ * DTO which represents an invitation to join an organization.
+ */
 export interface OrganizationInvitationDto {
     organizationId: string;
     requestingUserEmail: string;

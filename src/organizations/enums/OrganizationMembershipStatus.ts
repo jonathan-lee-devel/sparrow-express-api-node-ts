@@ -1,3 +1,6 @@
+/**
+ * Enum representing different available statuses for organization membership.
+ */
 export enum OrganizationMembershipStatus {
     // eslint-disable-next-line no-unused-vars
     AWAITING_APPROVAL,

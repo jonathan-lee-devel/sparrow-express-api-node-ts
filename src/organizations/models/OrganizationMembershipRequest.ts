@@ -2,6 +2,9 @@ import mongoose from 'mongoose';
 
 const {model, Schema} = mongoose;
 
+/**
+ * Data model representation of a request to join an organization.
+ */
 export interface OrganizationMembershipRequest {
     id: string;
     organizationId: string;
