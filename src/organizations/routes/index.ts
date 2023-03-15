@@ -15,6 +15,7 @@ import {
   removeOrganizationAdministratorController,
   removeOrganizationMemberController,
   requestToJoinOrganizationController,
+  updateAdministratorJoinAsMemberController,
 } from '../controllers';
 import {createOrganizationValidationChain} from '../validation-chains/create-organization';
 import {removeOrganizationMemberValidationChain} from '../validation-chains/remove-organization-member';
@@ -46,5 +47,7 @@ configureRoute(router, HttpRequestMethod.PUT, '/request-to-join/approve/:request
 configureRoute(router, HttpRequestMethod.POST, '/invite-to-join/:organizationId', true, inviteToJoinOrganizationValidationChain, makeExpressCallback(logger, inviteToJoinOrganizationController));
 
 configureRoute(router, HttpRequestMethod.GET, '/invitations/tokenValue/:organizationInvitationTokenValue', true, [], makeExpressCallback(logger, getOrganizationInvitationByTokenValueController));
+
+configureRoute(router, HttpRequestMethod.PUT, '/update-admin-join-as-member/:toJoinOrganizationId', true, [], makeExpressCallback(logger, updateAdministratorJoinAsMemberController));
 
 export {router as OrganizationsRouter};

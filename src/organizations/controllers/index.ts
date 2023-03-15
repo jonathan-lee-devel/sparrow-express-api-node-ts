@@ -11,6 +11,7 @@ import {
   removeOrganizationAdministrator,
   removeOrganizationMember,
   requestToJoinOrganization,
+  updateAdministratorJoinAsMember,
 } from '../services';
 import {makeGetOrganizationController} from './get-organization';
 import {makeRequestToJoinOrganizationController} from './request-to-join-organization';
@@ -22,6 +23,7 @@ import {makeGetOrganizationsWhereInvolvedController} from './get-organizations-w
 import {makeGetOrganizationSnippetController} from './get-organization-snippet';
 import {makeInviteToJoinOrganizationController} from './invite-to-join-organization';
 import {makeGetOrganizationInvitationByTokenValueController} from './get-organization-invitation-by-token-value';
+import {makeUpdateAdministratorJoinAsMemberController} from './update-administrator-join-as-member';
 
 export const createOrganizationController = makeCreateOrganizationController(createOrganization);
 
@@ -50,3 +52,6 @@ export const inviteToJoinOrganizationController =
 
 export const getOrganizationInvitationByTokenValueController =
     makeGetOrganizationInvitationByTokenValueController(getOrganizationInvitationByTokenValue);
+
+export const updateAdministratorJoinAsMemberController =
+    makeUpdateAdministratorJoinAsMemberController(updateAdministratorJoinAsMember);
