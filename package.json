@@ -1,5 +1,5 @@
 {
-  "name": "sparrow-api",
+  "name": "sparrow-express-api",
   "version": "0.0.0",
   "description": "API for food delivery service application",
   "main": "dist/main/app.js",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/io-jonathanlee/sparrow-api.git"
+    "url": "git+https://github.com/io-jonathanlee/sparrow-express-api.git"
   },
   "keywords": [
     "split"
@@ -27,9 +27,9 @@
   "author": "Jonathan Lee <jonathan.lee.devel@gmail.com>",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/io-jonathanlee/sparrow-api/issues"
+    "url": "https://github.com/io-jonathanlee/sparrow-express-api/issues"
   },
-  "homepage": "https://github.com/io-jonathanlee/sparrow-api#readme",
+  "homepage": "https://github.com/io-jonathanlee/sparrow-express-api#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "bunyan": "^1.8.15",

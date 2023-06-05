@@ -27,7 +27,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args:
-            -Dsonar.projectKey=io-jonathanlee_sparrow-api
+            -Dsonar.projectKey=io-jonathanlee_sparrow-express-api
             -Dsonar.organization=io-jonathanlee
             -Dsonar.sources=src
             -Dsonar.tests=src
